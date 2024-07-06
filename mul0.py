@@ -5,8 +5,8 @@ import time
 N = 4096
 if __name__ == "__main__":
     # numpy float64 by default
-    A = np.random.randn(N, N) #.astype(np.float32) 
-    B = np.random.randn(N, N) #.astype(np.float32)
+    A = np.random.randn(N, N).astype(np.float32) 
+    B = np.random.randn(N, N).astype(np.float32)
     # print(A.dtype)
     # for each cell, in the N^2 output, you are multiplying
     # two vectors of size N. note: its actually 2N compute
