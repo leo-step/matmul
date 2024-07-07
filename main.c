@@ -58,8 +58,8 @@ int main() {
     }
 
     double total_elapsed_sec = elapsed_sec + elapsed_nsec / 1e9;
-    double tflop = (double)N*N*2*N*1e-12;
-    printf("%f TFLOPs\n", tflop / total_elapsed_sec);
+    double gflop = (double)N*N*2*N*1e-9;
+    printf("%f GFLOPs\n", gflop / total_elapsed_sec);
 
     free_matrix(A);
     free_matrix(B);

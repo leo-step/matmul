@@ -22,7 +22,7 @@ if __name__ == "__main__":
     start = time.monotonic()
     C = A @ B
     end = time.monotonic()
-    print((flop*1e-12)/(end-start), "TFLOPS")
+    print((flop*1e-9)/(end-start), "GFLOPs")
     # M1 Pro Mac, float32 - 0.5 TFLOPs
     # float64 is half as fast, and we don't need that precision
     # 10 cores (8 performance and 2 efficiency)
