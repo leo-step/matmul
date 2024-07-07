@@ -21,9 +21,9 @@ void load_matrix(Matrix *matrix, const char* filename);
 
 bool equal(Matrix *A, Matrix *B);
 
-Matrix *matrix_multiply(Matrix *A, Matrix *B, Matrix *C);
+void matrix_multiply(Matrix *A, Matrix *B, Matrix *C);
 
-Matrix *matrix_multiply_baseline(Matrix *A, Matrix *B, Matrix *C);
+void matrix_multiply_baseline(Matrix *A, Matrix *B, Matrix *C);
 
 void print_matrix(Matrix *matrix);
 
