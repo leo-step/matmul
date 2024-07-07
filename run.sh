@@ -12,6 +12,6 @@ echo "Running version $1"
 if [ "$1" -eq 0 ]; then
   $python mul0.py
 else
-  gcc mul$1.c -o mul$1 && ./mul"$1" && rm mul$1
+  gcc -O3 mul$1.c matrix.c main.c -o mul$1 && ./mul"$1" && rm mul$1
 fi
 
