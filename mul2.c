@@ -6,8 +6,10 @@
 void tile_multiply(Matrix *A, Matrix *B, Matrix *C, int ii, int jj, int kk) {
     for (int i = ii; i < ii + TILE_SIZE; i++) { // loop order?
         for (int j = jj; j < jj + TILE_SIZE; j++) {
-            for (int k = kk; k < kk + TILE_SIZE; k++) { // B matrix transpose?
+            for (int k = kk; k < kk + TILE_SIZE; k++) {
                 C->data[i * C->cols + j] += A->data[i * A->cols + k] * B->data[k * B->cols + j];
+                // if you assume B is transposed (like this: B->data[j * B->cols + k])
+                // you get slightly higher performance because memory access better
             }
         }
     }
