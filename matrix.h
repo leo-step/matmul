@@ -25,6 +25,8 @@ void matrix_multiply(Matrix *A, Matrix *B, Matrix *C);
 
 void matrix_multiply_baseline(Matrix *A, Matrix *B, Matrix *C);
 
+void transpose_matrix(Matrix *A);
+
 void print_matrix(Matrix *matrix);
 
 #endif

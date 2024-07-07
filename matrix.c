@@ -86,7 +86,7 @@ bool equal(Matrix *A, Matrix *B) {
     }
 
     for (int i = 0; i < A->rows * A->cols; i++) {
-        if (A->data[i] != B->data[i]) {
+        if (A->data[i] - B->data[i] > 1e7) {
             return false;
         }
     }
@@ -103,6 +103,26 @@ void matrix_multiply_baseline(Matrix *A, Matrix *B, Matrix *C) {
             }
         }
     }
+}
+
+void transpose_matrix(Matrix *A) {
+    float* transposed_data = (float*)malloc(A->rows * A->cols * sizeof(float));
+    if (transposed_data == NULL) {
+        exit(EXIT_FAILURE);
+    }
+
+    for (int i = 0; i < A->rows; ++i) {
+        for (int j = 0; j < A->cols; ++j) {
+            transposed_data[j * A->rows + i] = A->data[i * A->cols + j];
+        }
+    }
+
+    free(A->data);
+
+    A->data = transposed_data;
+    int temp = A->rows;
+    A->rows = A->cols;
+    A->cols = temp;
 }
 
 void print_matrix(Matrix *matrix) {

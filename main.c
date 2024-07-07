@@ -40,7 +40,7 @@ int main() {
 
     // puts("======= Matrix A =======");
     // print_matrix(A);
-    // puts("======= Matrix A =======");
+    // puts("======= Matrix B =======");
     // print_matrix(B);
     // puts("======= Matrix C =======");
     // print_matrix(C);
