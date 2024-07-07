@@ -61,5 +61,10 @@ int main() {
     double tflop = (double)N*N*2*N*1e-12;
     printf("%f TFLOPs\n", tflop / total_elapsed_sec);
 
+    free_matrix(A);
+    free_matrix(B);
+    free_matrix(C);
+    free_matrix(C_true);
+
     return 0;
 }
