@@ -4,7 +4,7 @@
 #include <assert.h>
 #include "matrix.h"
 
-#define N 1024
+#define N 2048
 
 bool file_exists(const char *filename) {
     FILE *file = fopen(filename, "r");
