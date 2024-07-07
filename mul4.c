@@ -6,8 +6,8 @@
 
 void tile_multiply(Matrix *A, Matrix *B, Matrix *C, int ii, int jj, int kk) {
     for (int i = ii; i < ii + TILE_SIZE; i++) {
+        float32x4_t vA = vld1q_f32(&(A->data[i * A->cols]));
         for (int j = jj; j < jj + TILE_SIZE; j++) {
-            float32x4_t vA = vld1q_f32(&(A->data[i * A->cols]));
             float32x4_t vB = vld1q_f32(&(B->data[j * B->cols]));
             float32x4_t vC = vld1q_f32(&(C->data[i * C->cols + j]));
             float32x4_t vr = vfmaq_f32(vC, vA, vB);
