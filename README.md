@@ -11,3 +11,9 @@ Running version 4 (matmul)
 Usage: ./run.sh <number>
 ```
 The bash script compiles and executes a binary with `mul{number}.c` to measure the FLOPs of `matrix_multiply`. To run the numpy baseline (`mul0.py`), you will need to set the python command inside of `run.sh`.
+## Five steps to beating numpy
+#### 1. Baseline (mul0) & matrix.h
+#### 2. Naive algorithm (mul1)
+#### 3. Tiled multiply (mul2)
+#### 4. Transpose-then-multiply (mul3)
+#### 5. Fused multiply-add (mul4)
