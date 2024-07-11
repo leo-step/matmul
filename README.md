@@ -46,3 +46,13 @@ Running version 3
 2.417634 GFLOPs
 ```
 ### 5. Fused multiply-add (mul4)
+To beat numpy's performance, we combine the previous techniques with SIMD (single instruction, multiple data) operations for the ARM64 chip architecture. First, we combine our _transpose-then-multiply_ technique with the tiled multiplication algorithm. The second matrix in the multiplication is transposed before being tile-multiplied, which enables proper caching on the tile level.
+
+Now, the trick is to use SIMD instructions to parallelize the transposed-tile multiplication, specifically by converting each row x row multiplication into a single operation. For ARM64 architecture, SIMD operations are provided by the NEON extension. One common operation is the fused multiply-add (FMA), which performs a multiplication and addition in a single step. NEON's implementation of FMA (`vld1q_f32` and `vfmaq_f32`) can pack four 32-bit floats into a 128-bit register and directly compute the element-wise multiplication against another set of four floats. It also adds the result to an output vector within the same operation.
+
+In our tile multiplication, if we set tile width = 4, each row fits into a single FMA instruction. This eliminates 2 of 6 nested for loops in our implementation since you no longer need to iterate over individual floats to multiply two rows together -- the entire multiplication is calculated in one-shot. This gives a gigantic increase in performance that beats numpy while only running on a single thread.
+
+```
+Running version 4
+811.098115 GFLOPs
+```
